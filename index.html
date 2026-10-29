@@ -4,28 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090909">
-  <meta name="description" content="Renacidos Roleplay. Tu historia comienza aquí. Únete a nuestra comunidad GTA V RP.">
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="description" content="Renacidos Roleplay — vive tu propia historia en GTA V Roleplay. Únete gratis a nuestra comunidad.">
   <title>Renacidos Roleplay | Tu historia comienza aquí</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --red: #ed202b;
-      --red-dark: #a80d18;
-      --black: #090909;
-      --panel: #111113;
-      --white: #f5f5f5;
-      --muted: #a3a3a8;
+      --red: #e52235;
+      --red-dark: #a91020;
+      --bg: #0b0b0d;
+      --panel: #131316;
+      --white: #f5f5f6;
+      --muted: #a3a3aa;
+      --border: rgba(255,255,255,.10);
+      --max: 1180px;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -34,9 +36,10 @@
     }
 
     body {
-      background: var(--black);
+      background: var(--bg);
       color: var(--white);
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
@@ -49,188 +52,187 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    .top-line {
-      height: 3px;
-      background: linear-gradient(90deg, #500008, var(--red), #ff5961, var(--red-dark));
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    header {
-      height: 76px;
-      padding: 0 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-      background: rgba(8, 8, 9, .94);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .topbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
+      background: rgba(10,10,12,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
-      flex-shrink: 0;
+      min-width: 0;
     }
 
-    .brand-mark {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      background: var(--red);
-      color: white;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 25px;
-      font-weight: 900;
-      font-style: italic;
-      transform: skew(-7deg);
-      box-shadow: 0 0 24px #ed202b35;
+    /* LOGO PEQUEÑO: SOLO ENCABEZADO Y PIE DE PÁGINA */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      object-fit: contain;
+      border-radius: 6px;
     }
 
-    .brand-name {
+    .brand-text {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 23px;
+      font-size: 24px;
       font-weight: 900;
-      letter-spacing: 1px;
       line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .5px;
     }
 
-    .brand-name span {
+    .brand-text span {
+      display: block;
       color: var(--red);
-    }
-
-    .brand-sub {
-      margin-top: 5px;
-      font-size: 9px;
+      font-size: 12px;
       letter-spacing: 3px;
-      color: var(--muted);
+      margin-top: 5px;
     }
 
-    nav {
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 25px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .7px;
     }
 
-    nav a {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .6px;
-      color: #d2d2d5;
-      transition: color .25s;
-    }
-
-    nav a:hover {
+    .nav-links a:not(.btn):hover {
       color: var(--red);
     }
 
     .btn {
-      min-height: 46px;
-      padding: 0 22px;
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 9px;
-      background: var(--red);
-      border: 1px solid var(--red);
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
+      min-height: 48px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: .7px;
       text-transform: uppercase;
-      transition: transform .25s, background .25s, box-shadow .25s;
+      transition: .2s ease;
       cursor: pointer;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      background: #ff303a;
-      box-shadow: 0 9px 30px #ed202b40;
+    .btn-red {
+      background: var(--red);
+      color: white;
+    }
+
+    .btn-red:hover {
+      background: #ff3448;
+      transform: translateY(-2px);
     }
 
     .btn-outline {
-      background: rgba(0,0,0,.28);
       border-color: rgba(255,255,255,.35);
+      background: rgba(0,0,0,.25);
+      color: white;
     }
 
     .btn-outline:hover {
       border-color: var(--red);
-      background: #ed202b18;
+      color: white;
+      background: rgba(229,34,53,.12);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 1px solid var(--border);
+      padding: 9px 12px;
+      border-radius: 4px;
+      font-size: 22px;
+      cursor: pointer;
     }
 
     .hero {
-      min-height: 690px;
-      height: calc(100vh - 79px);
-      max-height: 900px;
       position: relative;
+      isolation: isolate;
+      min-height: 610px;
       display: flex;
       align-items: center;
       overflow: hidden;
-      isolation: isolate;
-      background: #101012;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: -3;
-      background-image: url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2200&q=85');
-      background-position: center 55%;
-      background-size: cover;
-      animation: heroZoom 18s ease-in-out infinite alternate;
+      background: #111114;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
       z-index: -2;
+      inset: 0;
       background:
-        linear-gradient(90deg, #080809 0%, rgba(8,8,9,.94) 24%, rgba(8,8,9,.65) 57%, rgba(8,8,9,.22) 100%),
-        linear-gradient(0deg, #090909 0%, transparent 32%, rgba(0,0,0,.12) 100%);
+        linear-gradient(90deg, rgba(7,7,9,.96) 0%, rgba(7,7,9,.76) 50%, rgba(7,7,9,.38) 100%),
+        linear-gradient(0deg, var(--bg), transparent 30%),
+        url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2200&q=85")
+        center 45% / cover no-repeat;
+      transform: scale(1.02);
     }
 
     .hero::after {
       content: "";
       position: absolute;
       z-index: -1;
-      top: 15%;
-      left: -150px;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: #ed202b18;
-      filter: blur(90px);
-      pointer-events: none;
+      width: 420px;
+      height: 420px;
+      right: -180px;
+      top: 70px;
+      border: 1px solid rgba(229,34,53,.22);
+      transform: rotate(35deg);
+      box-shadow: 0 0 0 50px rgba(229,34,53,.025),
+                  0 0 0 100px rgba(229,34,53,.02);
     }
 
     .hero-content {
-      width: min(1120px, 86%);
-      margin: 0 auto;
-      padding: 65px 0 90px;
-      animation: riseIn .9s ease-out both;
+      max-width: 780px;
+      padding: 100px 0 115px;
     }
 
     .eyebrow {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-      color: #ff626a;
-      font-size: 10px;
+      gap: 10px;
+      color: #ff5867;
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
     .eyebrow::before {
       content: "";
-      width: 35px;
+      width: 32px;
       height: 2px;
       background: var(--red);
     }
@@ -238,474 +240,398 @@
     h1, h2, h3 {
       font-family: 'Barlow Condensed', sans-serif;
       text-transform: uppercase;
+      line-height: .98;
     }
 
     h1 {
-      max-width: 850px;
-      font-size: clamp(62px, 9.5vw, 120px);
+      max-width: 800px;
+      font-size: clamp(54px, 8.5vw, 106px);
       font-weight: 900;
-      line-height: .84;
-      letter-spacing: -2px;
+      letter-spacing: -1.5px;
     }
 
-    h1 .accent {
+    h1 span {
       display: block;
       color: var(--red);
-      text-shadow: 0 5px 45px #ed202b27;
     }
 
     .hero-description {
-      max-width: 520px;
-      margin-top: 28px;
+      max-width: 550px;
+      margin-top: 25px;
       color: #d0d0d4;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .hero-note {
+      margin-top: 25px;
+      color: #aaaab1;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .hero-note strong {
+      color: #fff;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-header {
+      max-width: 680px;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 13px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 5vw, 60px);
+      font-weight: 900;
+      margin-bottom: 17px;
+    }
+
+    .section-description {
+      color: var(--muted);
       font-size: 14px;
       line-height: 1.9;
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 32px;
-    }
-
-    .hero-bottom {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 35px;
-      margin-top: 52px;
-    }
-
-    .hero-stat {
-      padding-left: 14px;
-      border-left: 2px solid var(--red);
-    }
-
-    .hero-stat strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-    }
-
-    .hero-stat span {
-      display: block;
-      margin-top: 3px;
-      color: var(--muted);
-      font-size: 9px;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-    }
-
-    .scroll-hint {
-      position: absolute;
-      right: 7%;
-      bottom: 42px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #b5b5ba;
-      font-size: 9px;
-      letter-spacing: 2px;
-      writing-mode: vertical-rl;
-    }
-
-    .scroll-hint::after {
-      content: "";
-      width: 1px;
-      height: 50px;
-      background: var(--red);
-    }
-
-    .section {
-      padding: 100px 7%;
-    }
-
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 42px;
-    }
-
-    .section-label {
-      color: var(--red);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .section-heading h2 {
-      margin-top: 12px;
-      font-size: clamp(40px, 6vw, 65px);
-      line-height: .98;
-      font-weight: 900;
-    }
-
-    .section-heading h2 span {
-      color: var(--red);
-    }
-
-    .section-heading p {
-      max-width: 560px;
-      margin-top: 17px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    .intro-grid {
+    .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 65px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 55px;
       align-items: center;
     }
 
-    .intro-visual {
-      min-height: 390px;
+    .about-copy p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.95;
+      margin-bottom: 17px;
+    }
+
+    .about-visual {
+      min-height: 350px;
       position: relative;
       overflow: hidden;
-      background: #171719;
-      border: 1px solid #ffffff12;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(0deg, rgba(0,0,0,.72), transparent 75%),
+        url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=85")
+        center / cover no-repeat;
     }
 
-    .intro-visual img {
+    .visual-label {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .7s;
-    }
-
-    .intro-visual:hover img {
-      transform: scale(1.06);
-    }
-
-    .intro-visual::after {
-      content: "";
-      position: absolute;
-      inset: 35% 0 0;
-      background: linear-gradient(transparent, #090909d9);
-    }
-
-    .visual-caption {
-      position: absolute;
-      z-index: 1;
       left: 25px;
       bottom: 25px;
     }
 
-    .visual-caption strong {
+    .visual-label strong {
       display: block;
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 30px;
       text-transform: uppercase;
     }
 
-    .visual-caption span {
-      color: #ff6970;
-      font-size: 10px;
+    .visual-label span {
+      color: #ff6573;
+      font-size: 11px;
       letter-spacing: 2px;
+      font-weight: 800;
     }
 
-    .intro-copy p {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    .feature-list {
+    .features {
       display: grid;
-      gap: 15px;
-      margin-top: 25px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
     }
 
     .feature {
-      display: flex;
-      align-items: center;
-      gap: 13px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 5px;
+    }
+
+    .feature-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--red);
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    .feature h3 {
+      font-size: 21px;
+      margin: 9px 0;
+    }
+
+    .feature p {
+      color: var(--muted);
       font-size: 12px;
-      font-weight: 600;
+      line-height: 1.8;
     }
 
-    .feature-icon {
-      width: 30px;
-      height: 30px;
+    .factions-section {
+      background: #101013;
+      border-block: 1px solid var(--border);
+    }
+
+    .factions-grid {
       display: grid;
-      place-items: center;
-      background: #ed202b19;
-      color: #ff626a;
-      border: 1px solid #ed202b50;
-    }
-
-    .factions {
-      background: linear-gradient(180deg, #0d0d0f, #090909);
-    }
-
-    .faction-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
     .faction-card {
-      min-height: 330px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 28px;
       overflow: hidden;
-      background: #171719;
-      border: 1px solid #ffffff12;
-      transition: transform .35s, border-color .35s;
+      background: #17171b;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: transform .25s, border-color .25s;
     }
 
     .faction-card:hover {
-      transform: translateY(-7px);
-      border-color: #ed202b90;
+      transform: translateY(-5px);
+      border-color: rgba(229,34,53,.65);
     }
 
-    .faction-card img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .54;
-      transition: transform .7s, opacity .4s;
+    .faction-image {
+      height: 210px;
+      position: relative;
+      background-color: #242429;
+      background-size: cover;
+      background-position: center;
     }
 
-    .faction-card:hover img {
-      transform: scale(1.07);
-      opacity: .72;
-    }
-
-    .faction-card::after {
+    .faction-image::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, #080809 3%, #080809d9 30%, transparent 100%);
+      background: linear-gradient(0deg, #17171b, transparent 65%);
+    }
+
+    .police-image {
+      background-image: url("https://images.unsplash.com/photo-1595500381751-d940898bdc7e?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .ems-image {
+      background-image: url("https://images.unsplash.com/photo-1587745416684-47953f16f02f?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .mechanic-image {
+      background-image: url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80");
     }
 
     .faction-content {
-      position: relative;
-      z-index: 1;
+      padding: 23px;
     }
 
-    .faction-number {
-      color: #ff6b72;
-      font-size: 10px;
-      letter-spacing: 2px;
+    .faction-content h3 {
+      font-size: 30px;
+      margin-bottom: 11px;
     }
 
-    .faction-card h3 {
-      margin-top: 10px;
-      font-size: 35px;
-      font-weight: 800;
-    }
-
-    .faction-card p {
-      margin-top: 9px;
-      color: #c3c3c8;
-      font-size: 11px;
+    .faction-content p {
+      color: var(--muted);
+      font-size: 13px;
       line-height: 1.8;
+      min-height: 70px;
     }
 
-    .faction-link {
+    .faction-tag {
       display: inline-block;
-      margin-top: 18px;
-      color: #ff636b;
+      color: #ff6876;
+      background: rgba(229,34,53,.10);
+      border: 1px solid rgba(229,34,53,.22);
+      border-radius: 3px;
+      padding: 5px 9px;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
-    }
-
-    .join-banner {
-      position: relative;
-      margin: 0 7%;
-      padding: 65px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      overflow: hidden;
-      background: linear-gradient(110deg, #6e0911, #ed202b 58%, #a30c16);
-    }
-
-    .join-banner::after {
-      content: "R";
-      position: absolute;
-      right: 20%;
-      top: -95px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 340px;
-      font-weight: 900;
-      color: #ffffff0c;
-      pointer-events: none;
-    }
-
-    .join-banner > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .join-banner h2 {
-      font-size: clamp(38px, 5vw, 58px);
-      line-height: .95;
-    }
-
-    .join-banner p {
-      max-width: 500px;
-      margin-top: 12px;
-      color: #ffe1e2;
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    .join-banner .btn {
-      flex-shrink: 0;
-      background: #090909;
-      border-color: #090909;
-    }
-
-    .join-banner .btn:hover {
-      background: #202020;
+      margin-top: 17px;
     }
 
     .rules-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
     }
 
-    .rule-card {
-      padding: 28px;
+    .rule {
+      display: flex;
+      gap: 16px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
       background: var(--panel);
-      border: 1px solid #ffffff10;
-      transition: border-color .3s, transform .3s;
     }
 
-    .rule-card:hover {
-      border-color: #ed202b75;
-      transform: translateY(-4px);
-    }
-
-    .rule-number {
-      color: var(--red);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 38px;
+    .rule-icon {
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 5px;
+      background: rgba(229,34,53,.12);
+      color: #ff5b6b;
       font-weight: 900;
+      font-size: 18px;
     }
 
-    .rule-card h3 {
-      margin-top: 10px;
-      font-size: 24px;
+    .rule h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
     }
 
-    .rule-card p {
-      margin-top: 12px;
+    .rule p {
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.9;
+      font-size: 12px;
+      line-height: 1.8;
     }
 
-    .vip {
-      background: #0d0d0f;
+    .vip-section {
+      background: #101013;
+      border-block: 1px solid var(--border);
     }
 
     .vip-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
     .vip-card {
       padding: 30px;
-      background: #151517;
-      border: 1px solid #ffffff12;
-      transition: border-color .3s, transform .3s;
+      border: 1px solid var(--border);
+      background: #17171b;
+      border-radius: 6px;
     }
 
-    .vip-card:hover {
-      transform: translateY(-5px);
+    .vip-card.featured {
       border-color: var(--red);
+      box-shadow: inset 0 3px 0 var(--red);
     }
 
-    .vip-card .tag {
-      color: #ff6970;
-      font-size: 9px;
+    .vip-level {
+      color: #ff6371;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
     }
 
     .vip-card h3 {
-      margin-top: 12px;
       font-size: 34px;
+      margin: 12px 0;
     }
 
     .vip-card p {
-      min-height: 60px;
-      margin-top: 10px;
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.9;
+      font-size: 13px;
+      line-height: 1.8;
     }
 
     .vip-card .btn {
       width: 100%;
-      margin-top: 23px;
+      margin-top: 24px;
     }
 
-    .contact {
-      text-align: center;
-      padding: 100px 7%;
-      background:
-        radial-gradient(ellipse at 50% 100%, #ed202b18, transparent 65%),
-        #090909;
-    }
-
-    .contact h2 {
-      font-size: clamp(44px, 7vw, 75px);
-      line-height: .95;
-    }
-
-    .contact h2 span {
-      color: var(--red);
-    }
-
-    .contact p {
-      max-width: 530px;
-      margin: 20px auto 28px;
+    .vip-disclaimer {
+      margin-top: 22px;
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .discord-cta {
+      padding: 80px 0;
+      background:
+        linear-gradient(100deg, rgba(130,10,24,.94), rgba(24,10,13,.96)),
+        url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=80")
+        center / cover;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .discord-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .discord-inner h2 {
+      margin-bottom: 12px;
+    }
+
+    .discord-inner p {
+      color: #e0d4d6;
+      font-size: 14px;
+    }
+
+    .discord-inner .btn {
+      flex-shrink: 0;
+      background: white;
+      color: #171114;
+    }
+
+    .discord-inner .btn:hover {
+      background: #ededed;
+      transform: translateY(-2px);
     }
 
     footer {
-      padding: 28px 7%;
+      padding: 35px 0;
+      background: #080809;
+    }
+
+    .footer-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      border-top: 1px solid #ffffff12;
-      color: #85858a;
-      font-size: 10px;
+      justify-content: space-between;
+      gap: 25px;
     }
 
-    footer strong {
-      color: white;
+    .footer-copy {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.8;
+      text-align: right;
     }
 
-    footer span {
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      margin-top: 5px;
+      justify-content: flex-end;
+    }
+
+    .footer-links a:hover {
       color: var(--red);
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
     }
 
     .reveal.visible {
@@ -713,21 +639,10 @@
       transform: translateY(0);
     }
 
-    @keyframes riseIn {
-      from { opacity: 0; transform: translateY(25px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes heroZoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
         scroll-behavior: auto !important;
+        transition: none !important;
       }
 
       .reveal {
@@ -737,316 +652,433 @@
     }
 
     @media (max-width: 900px) {
-      header { padding: 0 5%; }
-      nav { gap: 14px; }
-      nav a { font-size: 10px; }
-      header > .btn { padding: 0 12px; }
-      .section { padding: 75px 5%; }
-      .intro-grid { gap: 30px; }
-      .faction-grid, .vip-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .rules-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .join-banner { margin: 0 5%; }
+      .nav-links {
+        gap: 14px;
+        font-size: 10px;
+      }
+
+      .nav-links .btn {
+        padding-inline: 13px;
+      }
+
+      .about-grid {
+        gap: 30px;
+      }
+
+      .factions-grid, .vip-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .faction-card:last-child, .vip-card:last-child {
+        grid-column: 1 / -1;
+      }
     }
 
-    @media (max-width: 640px) {
-      header {
-        height: auto;
-        min-height: 72px;
-        flex-wrap: wrap;
-        padding: 13px 5%;
-        gap: 13px;
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 30px, var(--max));
       }
 
-      .brand-mark { width: 37px; height: 37px; }
-      .brand-name { font-size: 20px; }
-      nav {
-        order: 3;
-        width: 100%;
-        overflow-x: auto;
-        padding: 7px 0 3px;
-        gap: 21px;
+      .nav {
+        min-height: 70px;
       }
 
-      nav a { white-space: nowrap; }
-      header > .btn { min-height: 38px; margin-left: auto; font-size: 9px; }
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+      }
+
+      .brand-text {
+        font-size: 20px;
+      }
+
+      .brand-text span {
+        font-size: 10px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: #101013;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+        padding: 5px 0;
+      }
 
       .hero {
-        height: auto;
-        min-height: 680px;
+        min-height: 550px;
       }
 
-      .hero-bg { background-position: 58% center; }
       .hero::before {
-        background: linear-gradient(90deg, #080809e8, #0808099c),
-                    linear-gradient(0deg, #090909, transparent 55%);
+        background:
+          linear-gradient(90deg, rgba(7,7,9,.90), rgba(7,7,9,.62)),
+          linear-gradient(0deg, var(--bg), transparent 35%),
+          url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=80")
+          center / cover no-repeat;
       }
 
-      .hero-content { width: 90%; padding: 75px 0 90px; }
-      h1 { font-size: clamp(57px, 15vw, 84px); }
-      .hero-description { font-size: 12px; }
-      .hero-bottom { gap: 22px; margin-top: 40px; }
-      .hero-stat strong { font-size: 22px; }
-      .scroll-hint { display: none; }
+      .hero-content {
+        padding: 75px 0 85px;
+      }
 
-      .section { padding: 68px 5%; }
-      .intro-grid { grid-template-columns: 1fr; }
-      .intro-visual { min-height: 280px; }
-      .faction-grid, .vip-grid, .rules-grid { grid-template-columns: 1fr; }
-      .faction-card { min-height: 300px; }
-      .rule-card { padding: 24px; }
-      .vip-card p { min-height: 0; }
+      h1 {
+        font-size: clamp(51px, 13vw, 75px);
+      }
 
-      .join-banner {
-        margin: 0 5%;
-        padding: 40px 25px;
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: 270px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .factions-grid, .vip-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faction-card:last-child, .vip-card:last-child {
+        grid-column: auto;
+      }
+
+      .faction-content p {
+        min-height: 0;
+      }
+
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .discord-inner {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .join-banner::after { right: -5%; font-size: 220px; }
-      .contact { padding: 75px 5%; }
-      footer { flex-direction: column; text-align: center; }
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-copy {
+        text-align: left;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
     }
-  <style>
-  .brand-logo {
-  width: 45px;
-  height: 45px;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-}
-</style>
+  </style>
 </head>
 
 <body>
-  <div class="top-line"></div>
 
-  <header>
-    <a class="brand" href="#inicio" aria-label="Renacidos Roleplay inicio">
-      <div class="brand-mark">R</div>
-      <div>
-       <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
-         <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
-      </div>
-    </a>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Renacidos Roleplay, inicio">
+        <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
+        <div class="brand-text">
+          Renacidos
+          <span>ROLEPLAY</span>
+        </div>
+      </a>
 
-    <nav aria-label="Navegación principal">
-      <a href="#inicio">INICIO</a>
-      <a href="#nosotros">NOSOTROS</a>
-      <a href="#facciones">FACCIONES</a>
-      <a href="#normas">NORMATIVA</a>
-      <a href="#vip">TIENDA VIP</a>
-    </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
-    <a class="btn" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Unirme al Discord ↗</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#facciones">Facciones</a>
+        <a href="#normas">Normas</a>
+        <a href="#vip">VIP</a>
+        <a class="btn btn-red" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Unirme al servidor ↗</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-bg"></div>
-
-      <div class="hero-content">
-        <div class="eyebrow">Una ciudad. Miles de historias.</div>
-        <h1>VUELVE A<br><span class="accent">NACER.</span></h1>
-        <p class="hero-description">
-          Construye tu historia, conoce nuevos aliados y conquista las calles.
-          En Renacidos Roleplay, cada decisión tiene consecuencias y cada día
-          es una nueva oportunidad.
-        </p>
-
-        <div class="hero-buttons">
-          <a class="btn" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Entrar a la comunidad ↗</a>
-          <a class="btn btn-outline" href="#nosotros">Explorar la ciudad ↓</a>
-        </div>
-
-        <div class="hero-bottom">
-          <div class="hero-stat">
-            <strong>ROLEPLAY</strong>
-            <span>Vive tu personaje</span>
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Tu próxima historia comienza aquí</div>
+          <h1>Una ciudad.<span>Mil historias.</span>Tu destino.</h1>
+          <p class="hero-description">
+            Bienvenido a Renacidos Roleplay. Construye tu historia, conoce nuevos compañeros
+            y vive experiencias únicas en nuestra comunidad de GTA V Roleplay.
+            Tu camino comienza con una decisión.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Entrar a Renacidos ↗</a>
+            <a class="btn btn-outline" href="#nosotros">Descubrir el servidor ↓</a>
           </div>
-          <div class="hero-stat">
-            <strong>TU HISTORIA</strong>
-            <span>Tus decisiones cuentan</span>
-          </div>
-          <div class="hero-stat">
-            <strong>COMUNIDAD</strong>
-            <span>Juega con amigos</span>
-          </div>
+          <p class="hero-note"><strong>ACCESO A LA COMUNIDAD</strong> · Consulta los requisitos en Discord.</p>
         </div>
       </div>
-
-      <div class="scroll-hint">DESCUBRE MÁS</div>
     </section>
 
     <section class="section" id="nosotros">
-      <div class="intro-grid">
-        <div class="intro-visual reveal">
-          <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=85" alt="Ciudad iluminada durante la noche" loading="lazy">
-          <div class="visual-caption">
-            <span>BIENVENIDO A LA CIUDAD</span>
-            <strong>Escribe tu propia historia.</strong>
-          </div>
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <div class="section-kicker">Conoce Renacidos</div>
+          <h2>Tu historia.<br>Nuevas posibilidades.</h2>
+          <p>
+            Renacidos Roleplay es una comunidad para quienes quieren crear historias,
+            interpretar personajes y compartir aventuras dentro de una ciudad de GTA V.
+          </p>
+          <p>
+            Elige cómo quieres vivir: trabaja, emprende, forma parte de una facción
+            o descubre nuevas oportunidades junto a otros jugadores.
+          </p>
+          <a class="btn btn-red" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Conocer la comunidad ↗</a>
         </div>
 
-        <div class="intro-copy reveal">
-          <div class="section-label">01 / Nuestra comunidad</div>
-          <div class="section-heading">
-            <h2>NO ES SOLO UN JUEGO.<br><span>ES TU VIDA.</span></h2>
-          </div>
-          <p>
-            Renacidos Roleplay es un espacio para crear historias, formar
-            amistades y vivir nuevas experiencias dentro de una ciudad llena
-            de posibilidades.
-          </p>
-          <p>
-            Elige tu camino: protege las calles, ayuda a los ciudadanos,
-            emprende tu propio negocio o crea una historia completamente tuya.
-          </p>
-
-          <div class="feature-list">
-            <div class="feature"><span class="feature-icon">✓</span> Historias y experiencias de roleplay</div>
-            <div class="feature"><span class="feature-icon">✓</span> Comunidad y actividades</div>
-            <div class="feature"><span class="feature-icon">✓</span> Oportunidades para nuevos ciudadanos</div>
+        <div class="about-visual reveal">
+          <div class="visual-label">
+            <span>RENACIDOS ROLEPLAY</span>
+            <strong>La ciudad te espera</strong>
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="section factions" id="facciones">
-      <div class="section-heading reveal">
-        <div class="section-label">02 / Encuentra tu camino</div>
-        <h2>¿QUÉ PAPEL VAS A <span>JUGAR?</span></h2>
-        <p>Cada camino es diferente. Descubre tu lugar en la ciudad y construye tu propia reputación.</p>
-      </div>
-
-      <div class="faction-grid">
-        <article class="faction-card reveal">
-          <img src="https://images.unsplash.com/photo-1595500381751-d940898bdc7e?auto=format&fit=crop&w=900&q=80" alt="Vehículo policial en una escena urbana" loading="lazy">
-          <div class="faction-content">
-            <div class="faction-number">01 / SEGURIDAD</div>
-            <h3>Policía</h3>
-            <p>Protege a los ciudadanos, investiga casos y mantén el orden en las calles.</p>
-            <a class="faction-link" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar en Discord ↗</a>
-          </div>
+      <div class="container features">
+        <article class="feature reveal">
+          <div class="feature-number">01</div>
+          <h3>Interpreta</h3>
+          <p>Crea tu personaje y dale vida a una historia propia dentro de la ciudad.</p>
         </article>
-
-        <article class="faction-card reveal">
-          <img src="https://images.unsplash.com/photo-1587745416684-47953f16f02f?auto=format&fit=crop&w=900&q=80" alt="Personal de emergencias" loading="lazy">
-          <div class="faction-content">
-            <div class="faction-number">02 / EMERGENCIAS</div>
-            <h3>EMS</h3>
-            <p>Atiende emergencias, salva vidas y ayuda a quienes más lo necesitan.</p>
-            <a class="faction-link" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar en Discord ↗</a>
-          </div>
+        <article class="feature reveal">
+          <div class="feature-number">02</div>
+          <h3>Progresa</h3>
+          <p>Encuentra oportunidades, trabaja y desarrolla tu camino en la comunidad.</p>
         </article>
-
-        <article class="faction-card reveal">
-          <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80" alt="Taller mecánico y reparación de vehículos" loading="lazy">
-          <div class="faction-content">
-            <div class="faction-number">03 / AUTOMOCIÓN</div>
-            <h3>Mecánicos</h3>
-            <p>Repara vehículos, ayuda a los conductores y construye tu reputación.</p>
-            <a class="faction-link" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar en Discord ↗</a>
-          </div>
+        <article class="feature reveal">
+          <div class="feature-number">03</div>
+          <h3>Conecta</h3>
+          <p>Conoce jugadores, forma equipos y construye historias junto a otros.</p>
         </article>
       </div>
     </section>
 
-    <section class="join-banner reveal">
-      <div>
-        <h2>LA CIUDAD TE ESTÁ<br>ESPERANDO.</h2>
-        <p>Entra a nuestro Discord para conocer las novedades, resolver tus dudas y descubrir cómo comenzar tu historia.</p>
+    <section class="section factions-section" id="facciones">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">Encuentra tu camino</div>
+          <h2>Facciones de la ciudad</h2>
+          <p class="section-description">
+            Cada camino ofrece una experiencia distinta. Infórmate sobre las oportunidades
+            disponibles y los requisitos dentro de nuestro Discord.
+          </p>
+        </div>
+
+        <div class="factions-grid">
+          <article class="faction-card reveal">
+            <div class="faction-image police-image" role="img" aria-label="Imagen ilustrativa de vehículos policiales"></div>
+            <div class="faction-content">
+              <h3>Policía</h3>
+              <p>Protege la ciudad, investiga situaciones y trabaja en equipo para mantener el orden.</p>
+              <span class="faction-tag">Seguridad y servicio</span>
+            </div>
+          </article>
+
+          <article class="faction-card reveal">
+            <div class="faction-image ems-image" role="img" aria-label="Imagen ilustrativa de servicios de emergencia"></div>
+            <div class="faction-content">
+              <h3>EMS / Médicos</h3>
+              <p>Atiende emergencias, ayuda a los ciudadanos y brinda apoyo cuando más se necesita.</p>
+              <span class="faction-tag">Atención y rescate</span>
+            </div>
+          </article>
+
+          <article class="faction-card reveal">
+            <div class="faction-image mechanic-image" role="img" aria-label="Imagen ilustrativa de un taller mecánico"></div>
+            <div class="faction-content">
+              <h3>Mecánicos</h3>
+              <p>Repara vehículos, atiende clientes y desarrolla tu carrera en el mundo automotor.</p>
+              <span class="faction-tag">Trabajo y mecánica</span>
+            </div>
+          </article>
+        </div>
       </div>
-      <a class="btn" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Unirme ahora ↗</a>
     </section>
 
     <section class="section" id="normas">
-      <div class="section-heading reveal">
-        <div class="section-label">03 / Convivencia</div>
-        <h2>JUEGA CON <span>RESPETO.</span></h2>
-        <p>Una buena comunidad se construye entre todos. Estas son las bases para disfrutar del roleplay.</p>
-      </div>
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">Antes de entrar</div>
+          <h2>Reglas esenciales</h2>
+          <p class="section-description">
+            El buen roleplay se construye entre todos. Estas son recomendaciones generales;
+            consulta el reglamento oficial de Renacidos en Discord.
+          </p>
+        </div>
 
-      <div class="rules-grid">
-        <article class="rule-card reveal">
-          <div class="rule-number">01</div>
-          <h3>Respeto</h3>
-          <p>Trata a los demás con respeto. No se permiten el acoso ni las faltas de respeto fuera de personaje.</p>
-        </article>
-        <article class="rule-card reveal">
-          <div class="rule-number">02</div>
-          <h3>Roleplay</h3>
-          <p>Interpreta tu personaje de forma coherente y respeta las situaciones creadas con otros jugadores.</p>
-        </article>
-        <article class="rule-card reveal">
-          <div class="rule-number">03</div>
-          <h3>Comunidad</h3>
-          <p>Respeta las indicaciones del equipo de administración y consulta la normativa completa en Discord.</p>
-        </article>
-      </div>
+        <div class="rules-grid">
+          <article class="rule reveal">
+            <div class="rule-icon">01</div>
+            <div>
+              <h3>Respeto</h3>
+              <p>Trata con respeto a los demás jugadores y al equipo de administración.</p>
+            </div>
+          </article>
+          <article class="rule reveal">
+            <div class="rule-icon">02</div>
+            <div>
+              <h3>Roleplay</h3>
+              <p>Mantén la interpretación de tu personaje y respeta las situaciones de juego.</p>
+            </div>
+          </article>
+          <article class="rule reveal">
+            <div class="rule-icon">03</div>
+            <div>
+              <h3>Juego limpio</h3>
+              <p>No utilices trampas, exploits ni ventajas externas para perjudicar a otros.</p>
+            </div>
+          </article>
+          <article class="rule reveal">
+            <div class="rule-icon">04</div>
+            <div>
+              <h3>Reglamento</h3>
+              <p>Lee las normas oficiales y consulta a la administración si tienes dudas.</p>
+            </div>
+          </article>
+        </div>
 
-      <p style="margin-top:22px;color:#929298;font-size:11px;line-height:1.8">
-        Estas son pautas generales de presentación, no sustituyen el reglamento oficial del servidor.
-      </p>
-    </section>
-
-    <section class="section vip" id="vip">
-      <div class="section-heading reveal">
-        <div class="section-label">04 / Catálogo</div>
-        <h2>HAZLO A TU <span>MANERA.</span></h2>
-        <p>Explora las opciones VIP y consulta en nuestro Discord los vehículos, precios y condiciones disponibles.</p>
-      </div>
-
-      <div class="vip-grid">
-        <article class="vip-card reveal">
-          <div class="tag">CATÁLOGO 01</div>
-          <h3>Motos VIP</h3>
-          <p>Descubre las motocicletas disponibles para personalizar tu experiencia en la ciudad.</p>
-          <a class="btn btn-outline" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar catálogo ↗</a>
-        </article>
-
-        <article class="vip-card reveal">
-          <div class="tag">CATÁLOGO 02</div>
-          <h3>Vehículos VIP</h3>
-          <p>Consulta los modelos disponibles, sus características y los precios vigentes.</p>
-          <a class="btn btn-outline" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar catálogo ↗</a>
-        </article>
-
-        <article class="vip-card reveal">
-          <div class="tag">ATENCIÓN</div>
-          <h3>Tickets VIP</h3>
-          <p>Contacta con el equipo correspondiente para consultar compras y resolver dudas.</p>
-          <a class="btn" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Abrir Discord ↗</a>
-        </article>
+        <div style="margin-top:25px">
+          <a class="btn btn-outline" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Leer las normas oficiales ↗</a>
+        </div>
       </div>
     </section>
 
-    <section class="contact" id="discord">
-      <div class="section-label">05 / Forma parte de la historia</div>
-      <h2>TU PRÓXIMO CAPÍTULO<br><span>EMPIEZA AQUÍ.</span></h2>
-      <p>Únete a Renacidos Roleplay, conoce a la comunidad y prepárate para crear historias que valgan la pena recordar.</p>
-      <a class="btn" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Entrar al Discord ↗</a>
+    <section class="section vip-section" id="vip">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">Opciones de apoyo</div>
+          <h2>Zona VIP</h2>
+          <p class="section-description">
+            Consulta las opciones VIP disponibles en la comunidad. Los beneficios,
+            precios y condiciones deben confirmarse por los canales oficiales.
+          </p>
+        </div>
+
+        <div class="vip-grid">
+          <article class="vip-card reveal">
+            <div class="vip-level">OPCIÓN 01</div>
+            <h3>VIP Básico</h3>
+            <p>Consulta las ventajas y condiciones de esta opción en nuestro Discord.</p>
+            <a class="btn btn-outline" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar detalles ↗</a>
+          </article>
+
+          <article class="vip-card featured reveal">
+            <div class="vip-level">OPCIÓN 02</div>
+            <h3>VIP Premium</h3>
+            <p>Infórmate sobre los beneficios disponibles y las condiciones de acceso.</p>
+            <a class="btn btn-red" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar detalles ↗</a>
+          </article>
+
+          <article class="vip-card reveal">
+            <div class="vip-level">OPCIÓN 03</div>
+            <h3>VIP Especial</h3>
+            <p>Consulta las opciones adicionales que estén disponibles en la comunidad.</p>
+            <a class="btn btn-outline" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Consultar detalles ↗</a>
+          </article>
+        </div>
+
+        <p class="vip-disclaimer">
+          Las tarjetas son informativas. No representan precios, productos ni beneficios confirmados.
+          Verifica siempre las condiciones oficiales antes de realizar cualquier compra.
+        </p>
+      </div>
+    </section>
+
+    <section class="discord-cta">
+      <div class="container discord-inner reveal">
+        <div>
+          <div class="section-kicker" style="color:#ffb5bd">Forma parte de la comunidad</div>
+          <h2>¿Listo para renacer?</h2>
+          <p>Entra a nuestro Discord, conoce la comunidad y descubre cómo comenzar.</p>
+        </div>
+        <a class="btn" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Unirme al Discord ↗</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <div class="brand">
-      <div class="brand-mark">R</div>
-      <div>
-        <div class="brand-name">RENACIDOS <span>RP</span></div>
-        <div class="brand-sub">TU HISTORIA COMIENZA AQUÍ</div>
+    <div class="container footer-inner">
+      <a class="brand" href="#inicio" aria-label="Volver al inicio">
+        <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
+        <div class="brand-text">
+          Renacidos
+          <span>ROLEPLAY</span>
+        </div>
+      </a>
+
+      <div class="footer-copy">
+        <p>© <span id="year"></span> Renacidos Roleplay.</p>
+        <p>Comunidad independiente de GTA V Roleplay.</p>
+        <div class="footer-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#normas">Normas</a>
+          <a href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Discord ↗</a>
+        </div>
       </div>
     </div>
-    <div>© 2026 <strong>Renacidos Roleplay</strong>. Comunidad independiente.</div>
-    <div>HECHO PARA <span>LA COMUNIDAD</span></div>
   </footer>
 
   <script>
-    const revealElements = document.querySelectorAll('.reveal');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const revealItems = document.querySelectorAll('.reveal');
 
     if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
@@ -1054,12 +1086,11 @@
         });
       }, { threshold: 0.12 });
 
-      revealElements.forEach((element) => observer.observe(element));
+      revealItems.forEach(item => observer.observe(item));
     } else {
-      revealElements.forEach((element) => element.classList.add('visible'));
+      revealItems.forEach(item => item.classList.add('visible'));
     }
   </script>
+
 </body>
 </html>
-
-
