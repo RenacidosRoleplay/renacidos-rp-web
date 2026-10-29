@@ -2,948 +2,862 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a080a">
-  <meta name="description" content="Renacidos Roleplay — Vive tu propia historia en una ciudad llena de oportunidades. Entra gratis a nuestro servidor de GTA V Roleplay.">
-
-  <title>Renacidos Roleplay | Tu historia comienza aquí</title>
-
-  <style>
-    :root {
-      --bg: #09080a;
-      --panel: #121014;
-      --red: #d71920;
-      --red-dark: #8f1018;
-      --white: #ffffff;
-      --muted: #b8b2b7;
-      --border: rgba(255,255,255,.09);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .container {
-      width: min(1120px, 90%);
-      margin: auto;
-    }
-
-    /* NAVEGACIÓN */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(9,8,10,.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .brand-logo {
-      width: 48px;
-      height: 48px;
-      flex: 0 0 48px;
-      object-fit: contain;
-    }
-
-    .brand-name {
-      font-size: 16px;
-      line-height: 1.2;
-    }
-
-    .brand-name span {
-      display: block;
-      color: var(--red);
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-top: 4px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    nav a {
-      color: #ded9de;
-      font-size: 13px;
-      font-weight: bold;
-      transition: color .2s;
-    }
-
-    nav a:hover {
-      color: var(--red);
-    }
-
-    .nav-cta {
-      background: var(--red);
-      padding: 11px 16px;
-      border-radius: 5px;
-      color: white !important;
-    }
-
-    .nav-cta:hover {
-      background: #f1252d;
-    }
-
-    /* PORTADA CON FONDO PERSONALIZADO */
-
-    .hero {
-      min-height: 650px;
-      position: relative;
-      isolation: isolate;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: #100b0e;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      z-index: -2;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(7,7,9,.96) 0%,
-          rgba(7,7,9,.76) 50%,
-          rgba(7,7,9,.38) 100%
-        ),
-        linear-gradient(
-          0deg,
-          var(--bg),
-          transparent 30%
-        ),
-        url("./fondo.jpg") center 45% / cover no-repeat;
-
-      transform: scale(1.02);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      background: radial-gradient(
-        ellipse at 75% 45%,
-        rgba(215,25,32,.16),
-        transparent 55%
-      );
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 750px;
-      padding: 95px 0 110px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: #ff777c;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 2px;
-      background: var(--red);
-    }
-
-    h1 {
-      font-size: clamp(43px, 7vw, 82px);
-      line-height: .99;
-      letter-spacing: -3px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    h1 span {
-      color: var(--red);
-      display: block;
-    }
-
-    .hero-description {
-      color: #ded9df;
-      max-width: 560px;
-      font-size: 17px;
-      margin-bottom: 32px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
-
-    .btn {
-      min-height: 49px;
-      padding: 14px 23px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      border-radius: 5px;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .4px;
-      transition: transform .2s, background .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-primary {
-      background: var(--red);
-      color: white;
-      box-shadow: 0 8px 28px rgba(215,25,32,.22);
-    }
-
-    .btn-primary:hover {
-      background: #f1262e;
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,.3);
-      background: rgba(0,0,0,.25);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,.1);
-    }
-
-    .hero-status {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 38px;
-      color: #d2cbd2;
-      font-size: 12px;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #45df82;
-      border-radius: 50%;
-      box-shadow: 0 0 12px rgba(69,223,130,.6);
-    }
-
-    /* SECCIONES */
-
-    section {
-      padding: 90px 0;
-    }
-
-    .section-heading {
-      max-width: 680px;
-      margin-bottom: 40px;
-    }
-
-    .section-label {
-      color: #ff777c;
-      font-size: 11px;
-      letter-spacing: 3px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 45px);
-      line-height: 1.12;
-      margin-bottom: 16px;
-      font-weight: 900;
-    }
-
-    h2 span {
-      color: var(--red);
-    }
-
-    .section-heading p,
-    .about-text p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* SOBRE EL SERVIDOR */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .about-panel {
-      min-height: 320px;
-      border: 1px solid rgba(215,25,32,.28);
-      border-radius: 10px;
-      background:
-        radial-gradient(
-          circle at 50% 35%,
-          rgba(215,25,32,.18),
-          transparent 60%
-        ),
-        linear-gradient(145deg, #191116, #0c0b0d);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 35px;
-    }
-
-    .about-panel img {
-      width: 135px;
-      height: 135px;
-      object-fit: contain;
-      margin-bottom: 20px;
-    }
-
-    .about-panel strong {
-      font-size: 20px;
-      letter-spacing: 2px;
-    }
-
-    .about-panel span {
-      color: var(--red);
-      font-size: 11px;
-      letter-spacing: 4px;
-      margin-top: 5px;
-    }
-
-    .about-text p {
-      margin-bottom: 18px;
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 13px;
-      margin-top: 25px;
-    }
-
-    .feature {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #eee9ee;
-      font-size: 14px;
-    }
-
-    .feature-icon {
-      width: 28px;
-      height: 28px;
-      flex: 0 0 28px;
-      display: grid;
-      place-items: center;
-      color: #ff747a;
-      background: rgba(215,25,32,.13);
-      border-radius: 5px;
-      font-weight: 900;
-    }
-
-    /* FACCIONES */
-
-    .factions {
-      background: #0e0c0f;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .faction-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .faction-card {
-      padding: 29px;
-      background: linear-gradient(145deg, #171317, #100e11);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      transition: border-color .2s, transform .2s;
-    }
-
-    .faction-card:hover {
-      border-color: rgba(215,25,32,.65);
-      transform: translateY(-4px);
-    }
-
-    .faction-symbol {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      border-radius: 7px;
-      background: rgba(215,25,32,.15);
-      color: #ff656d;
-      font-size: 23px;
-      margin-bottom: 22px;
-    }
-
-    .faction-card h3 {
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
-
-    .faction-card p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* REGLAS */
-
-    .rules-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .rule-card {
-      padding: 24px;
-      border-left: 2px solid var(--red);
-      background: var(--panel);
-    }
-
-    .rule-number {
-      font-size: 12px;
-      color: #ff737a;
-      font-weight: 900;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .rule-card h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-
-    .rule-card p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* VIP */
-
-    .vip {
-      padding-top: 20px;
-    }
-
-    .vip-box {
-      border: 1px solid rgba(215,25,32,.35);
-      border-radius: 10px;
-      padding: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      background:
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(215,25,32,.16),
-          transparent 35%
-        ),
-        #121014;
-    }
-
-    .vip-box h2 {
-      font-size: clamp(28px, 4vw, 39px);
-    }
-
-    .vip-box p {
-      max-width: 600px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* DISCORD */
-
-    .discord-section {
-      padding-top: 20px;
-    }
-
-    .discord-box {
-      text-align: center;
-      padding: 65px 25px;
-      border-radius: 10px;
-      background:
-        linear-gradient(rgba(10,8,11,.86), rgba(10,8,11,.94)),
-        url("./fondo.jpg") center / cover no-repeat;
-      border: 1px solid var(--border);
-    }
-
-    .discord-box h2 {
-      margin-bottom: 14px;
-    }
-
-    .discord-box p {
-      max-width: 560px;
-      margin: 0 auto 27px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* PIE DE PÁGINA */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
-      background: #070608;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .footer-content p {
-      color: #99919a;
-      font-size: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      font-size: 12px;
-      color: #c7c0c7;
-    }
-
-    .footer-links a:hover {
-      color: var(--red);
-    }
-
-    /* MÓVILES */
-
-    @media (max-width: 850px) {
-      .navbar {
-        padding: 13px 0;
-        flex-wrap: wrap;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-
-      nav a {
-        font-size: 12px;
-      }
-
-      .hero {
-        min-height: 590px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .faction-grid,
-      .rules-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .vip-box {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 32px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .container {
-        width: 91%;
-      }
-
-      .brand-logo {
-        width: 40px;
-        height: 40px;
-        flex-basis: 40px;
-      }
-
-      .brand-name {
-        font-size: 14px;
-      }
-
-      nav {
-        gap: 12px;
-      }
-
-      nav a {
-        font-size: 11px;
-      }
-
-      .nav-cta {
-        padding: 8px 10px;
-      }
-
-      .hero {
-        min-height: 580px;
-      }
-
-      .hero::before {
-        background:
-          linear-gradient(
-            90deg,
-            rgba(7,7,9,.9),
-            rgba(7,7,9,.65)
-          ),
-          linear-gradient(0deg, var(--bg), transparent 40%),
-          url("./fondo.jpg") center / cover no-repeat;
-      }
-
-      .hero-content {
-        padding: 75px 0;
-      }
-
-      h1 {
-        letter-spacing: -1.5px;
-      }
-
-      .hero-description {
-        font-size: 15px;
-      }
-
-      section {
-        padding: 65px 0;
-      }
-
-      .faction-grid,
-      .rules-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-panel {
-        min-height: 270px;
-      }
-
-      .vip-box {
-        padding: 25px;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09080a">
+<meta name="description" content="Renacidos Roleplay. Únete gratis a nuestra comunidad de GTA V Roleplay.">
+<title>Renacidos Roleplay | Tu historia comienza aquí</title>
+
+<style>
+:root {
+  --bg: #09080a;
+  --panel: #141115;
+  --red: #dc1722;
+  --white: #fff;
+  --muted: #bdb5bd;
+  --border: rgba(255,255,255,.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+/* BARRA DE NAVEGACIÓN */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,7,9,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.brand-name span {
+  display: block;
+  color: var(--red);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-top: 5px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+nav a {
+  font-size: 13px;
+  font-weight: bold;
+  color: #ded9df;
+  transition: color .2s;
+}
+
+nav a:hover {
+  color: #ff515b;
+}
+
+.nav-cta {
+  background: var(--red);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+/* PORTADA Y FONDO */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 660px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #120b0e;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+
+  /* IMAGEN PERSONALIZADA: fondo.jpg */
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(5,5,7,.92) 0%,
+      rgba(5,5,7,.70) 48%,
+      rgba(5,5,7,.35) 100%
+    ),
+    linear-gradient(
+      0deg,
+      #09080a 0%,
+      transparent 35%
+    ),
+    url("./fondo.jpg");
+
+  background-size: cover, cover, cover;
+  background-position: center, center, center 45%;
+  background-repeat: no-repeat;
+
+  transform: scale(1.02);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 80% 45%,
+    rgba(220,23,34,.18),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 760px;
+  padding: 100px 0 115px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff777e;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 23px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background: var(--red);
+}
+
+h1 {
+  font-size: clamp(43px, 7vw, 82px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2.5px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+h1 span {
+  display: block;
+  color: var(--red);
+}
+
+.hero-description {
+  max-width: 560px;
+  color: #e1dce1;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  min-height: 49px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 900;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  background: var(--red);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #f52b35;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(0,0,0,.3);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+  color: #d4cdd4;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #45df82;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(69,223,130,.5);
+}
+
+/* SECCIONES GENERALES */
+
+section {
+  padding: 85px 0;
+}
+
+.section-label {
+  color: #ff747b;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 45px);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  font-weight: 900;
+}
+
+h2 span {
+  color: var(--red);
+}
+
+.section-intro {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.section-heading {
+  margin-bottom: 38px;
+}
+
+/* PRESENTACIÓN */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.about-panel {
+  min-height: 330px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgba(220,23,34,.3);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at center, rgba(220,23,34,.19), transparent 65%),
+    linear-gradient(145deg, #1a1318, #0c0b0d);
+}
+
+.about-panel img {
+  width: 135px;
+  height: 135px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.about-panel strong {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.about-panel span {
+  color: var(--red);
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 17px;
+}
+
+.features {
+  display: grid;
+  gap: 13px;
+  margin-top: 24px;
+}
+
+.feature {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.feature-icon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  color: #ff777e;
+  background: rgba(220,23,34,.15);
+  border-radius: 4px;
+}
+
+/* FACCIONES */
+
+.factions {
+  background: #0e0c0f;
+  border-block: 1px solid var(--border);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  padding: 28px;
+  background: linear-gradient(145deg, #191519, #100e11);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(220,23,34,.65);
+}
+
+.card-symbol {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  color: #ff6b73;
+  background: rgba(220,23,34,.15);
+  border-radius: 6px;
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* REGLAS */
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.rule {
+  padding: 24px;
+  border-left: 2px solid var(--red);
+  background: var(--panel);
+}
+
+.rule-number {
+  color: #ff747b;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.rule h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.rule p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* VIP */
+
+.vip {
+  padding-top: 15px;
+}
+
+.vip-box {
+  padding: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  border: 1px solid rgba(220,23,34,.35);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(220,23,34,.17), transparent 40%),
+    #131014;
+}
+
+.vip-box p {
+  max-width: 600px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* DISCORD */
+
+.discord-section {
+  padding-top: 20px;
+}
+
+.discord-box {
+  text-align: center;
+  padding: 65px 25px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(8,7,9,.88), rgba(8,7,9,.94)),
+    url("./fondo.jpg") center / cover no-repeat;
+}
+
+.discord-box p {
+  max-width: 570px;
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0 auto 26px;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+  padding: 28px 0;
+  background: #070608;
+  border-top: 1px solid var(--border);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-content p,
+.footer-links {
+  color: #aaa2aa;
+  font-size: 12px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+}
+
+.footer-links a:hover {
+  color: var(--red);
+}
+
+/* DISEÑO RESPONSIVE */
+
+@media (max-width: 850px) {
+  .navbar {
+    padding: 13px 0;
+    flex-wrap: wrap;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .cards,
+  .rules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vip-box {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-name {
+    font-size: 13px;
+  }
+
+  nav {
+    gap: 11px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    min-height: 590px;
+  }
+
+  .hero::before {
+    background-image:
+      linear-gradient(rgba(5,5,7,.70), rgba(5,5,7,.78)),
+      linear-gradient(0deg, #09080a 0%, transparent 40%),
+      url("./fondo.jpg");
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+  }
+
+  .hero-content {
+    padding: 75px 0;
+  }
+
+  h1 {
+    letter-spacing: -1.2px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  section {
+    padding: 62px 0;
+  }
+
+  .cards,
+  .rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-panel {
+    min-height: 270px;
+  }
+
+  .vip-box {
+    padding: 26px;
+  }
+
+  .footer-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="container navbar">
-      <a class="brand" href="#inicio" aria-label="Renacidos Roleplay, inicio">
-        <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
-        <div class="brand-name">
-          RENACIDOS
-          <span>ROLEPLAY</span>
-        </div>
-      </a>
-
-      <nav aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#nosotros">Servidor</a>
-        <a href="#facciones">Facciones</a>
-        <a href="#reglas">Reglas</a>
-        <a href="#vip">VIP</a>
-        <a class="nav-cta" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">ENTRAR GRATIS ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container">
-        <div class="hero-content">
-          <div class="eyebrow">Tu próxima historia comienza aquí</div>
-
-          <h1>
-            Una ciudad.
-            <span>Mil historias.</span>
-            Tu destino.
-          </h1>
-
-          <p class="hero-description">
-            Bienvenido a Renacidos Roleplay. Construye tu historia,
-            conoce nuevos amigos, elige tu camino y demuestra de qué
-            estás hecho. Tu aventura comienza cuando tú decides.
-          </p>
-
-          <div class="buttons">
-            <a class="btn btn-primary" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">
-              UNIRME AL DISCORD ↗
-            </a>
-
-            <a class="btn btn-secondary" href="#nosotros">
-              DESCUBRIR EL SERVIDOR
-            </a>
-          </div>
-
-          <div class="hero-status">
-            <span class="status-dot"></span>
-            <span>Comunidad abierta · Acceso gratuito</span>
-          </div>
-        </div>
+<header>
+  <div class="container navbar">
+    <a class="brand" href="#inicio">
+      <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
+      <div class="brand-name">
+        RENACIDOS
+        <span>ROLEPLAY</span>
       </div>
-    </section>
+    </a>
 
-    <section id="nosotros">
-      <div class="container about-grid">
-        <div class="about-panel">
-          <img src="./logo.png" alt="Emblema de Renacidos Roleplay">
-          <strong>RENACIDOS ROLEPLAY</strong>
-          <span>ESCRIBE TU HISTORIA</span>
-        </div>
+    <nav aria-label="Menú principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Servidor</a>
+      <a href="#facciones">Facciones</a>
+      <a href="#reglas">Reglas</a>
+      <a href="#vip">VIP</a>
+      <a class="nav-cta" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">ENTRAR GRATIS ↗</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="about-text">
-          <div class="section-label">Mucho más que un servidor</div>
+<main>
 
-          <h2>Tu historia. <span>Tus decisiones.</span></h2>
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">Tu próxima historia comienza aquí</div>
 
-          <p>
-            Renacidos Roleplay es un espacio para disfrutar del rol,
-            conocer personas y crear historias dentro de una ciudad
-            llena de posibilidades.
-          </p>
+        <h1>
+          Una ciudad.
+          <span>Mil historias.</span>
+          Tu destino.
+        </h1>
 
-          <p>
-            Puedes perseguir tus objetivos, desarrollar tu personaje,
-            trabajar con otros jugadores y vivir situaciones que harán
-            que cada sesión sea diferente.
-          </p>
+        <p class="hero-description">
+          Bienvenido a Renacidos Roleplay. Construye tu historia,
+          conoce nuevos amigos, elige tu camino y demuestra de qué
+          estás hecho. Tu aventura comienza cuando tú decides.
+        </p>
 
-          <div class="feature-list">
-            <div class="feature">
-              <span class="feature-icon">✓</span>
-              Una comunidad para compartir y jugar
-            </div>
-
-            <div class="feature">
-              <span class="feature-icon">✓</span>
-              Historias y experiencias de roleplay
-            </div>
-
-            <div class="feature">
-              <span class="feature-icon">✓</span>
-              Acceso gratuito a nuestra comunidad
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="factions" id="facciones">
-      <div class="container">
-        <div class="section-heading">
-          <div class="section-label">Encuentra tu camino</div>
-          <h2>¿Qué papel vas a <span>interpretar?</span></h2>
-          <p>
-            Elige cómo quieres vivir tu historia. Cada personaje
-            puede abrirte una puerta diferente dentro de la ciudad.
-          </p>
-        </div>
-
-        <div class="faction-grid">
-          <article class="faction-card">
-            <div class="faction-symbol">⚖</div>
-            <h3>Fuerzas del orden</h3>
-            <p>
-              Protege a los ciudadanos, participa en operativos
-              y haz cumplir las normas de la ciudad.
-            </p>
-          </article>
-
-          <article class="faction-card">
-            <div class="faction-symbol">✚</div>
-            <h3>Servicios médicos</h3>
-            <p>
-              Atiende emergencias, ayuda a otros jugadores
-              y conviértete en una pieza clave de la comunidad.
-            </p>
-          </article>
-
-          <article class="faction-card">
-            <div class="faction-symbol">◆</div>
-            <h3>Vida civil</h3>
-            <p>
-              Trabaja, emprende, conoce personas y construye
-              tu propio futuro dentro de la ciudad.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="reglas">
-      <div class="container">
-        <div class="section-heading">
-          <div class="section-label">Una mejor experiencia para todos</div>
-          <h2>El rol empieza con <span>respeto.</span></h2>
-          <p>
-            Conoce y respeta las normas de la comunidad para
-            mantener una experiencia divertida y justa.
-            Consulta siempre el reglamento oficial en Discord.
-          </p>
-        </div>
-
-        <div class="rules-grid">
-          <article class="rule-card">
-            <div class="rule-number">REGLA 01</div>
-            <h3>Respeta a la comunidad</h3>
-            <p>
-              Trata con respeto a los demás jugadores y al equipo
-              de administración.
-            </p>
-          </article>
-
-          <article class="rule-card">
-            <div class="rule-number">REGLA 02</div>
-            <h3>Valora el roleplay</h3>
-            <p>
-              Interpreta a tu personaje y respeta las situaciones
-              que se desarrollan dentro del juego.
-            </p>
-          </article>
-
-          <article class="rule-card">
-            <div class="rule-number">REGLA 03</div>
-            <h3>Lee el reglamento oficial</h3>
-            <p>
-              Revisa las reglas completas en nuestro Discord
-              antes de comenzar tu aventura.
-            </p>
-          </article>
-        </div>
-
-        <div style="margin-top:30px">
-          <a class="btn btn-secondary" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">
-            CONSULTAR REGLAMENTO EN DISCORD ↗
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="vip" id="vip">
-      <div class="container">
-        <div class="vip-box">
-          <div>
-            <div class="section-label">Personaliza tu experiencia</div>
-            <h2>Descubre las opciones <span>VIP.</span></h2>
-            <p>
-              ¿Quieres conocer las opciones VIP disponibles en
-              Renacidos Roleplay? Entra a nuestro Discord para
-              consultar la información y las condiciones vigentes.
-            </p>
-          </div>
-
+        <div class="buttons">
           <a class="btn btn-primary" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">
-            VER OPCIONES VIP ↗
+            UNIRME AL DISCORD ↗
+          </a>
+          <a class="btn btn-secondary" href="#nosotros">
+            DESCUBRIR EL SERVIDOR
           </a>
         </div>
-      </div>
-    </section>
 
-    <section class="discord-section">
-      <div class="container">
-        <div class="discord-box">
-          <div class="section-label">La ciudad te espera</div>
-          <h2>¿Listo para <span>renacer?</span></h2>
-
-          <p>
-            Únete a nuestra comunidad, conoce a otros jugadores
-            y prepárate para escribir una historia que sea tuya.
-            La entrada a nuestra comunidad es gratuita.
-          </p>
-
-          <a class="btn btn-primary" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">
-            ENTRAR A RENACIDOS ROLEPLAY ↗
-          </a>
+        <div class="status">
+          <span class="status-dot"></span>
+          <span>Comunidad abierta · Acceso gratuito</span>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <a class="brand" href="#inicio">
-        <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
-        <div class="brand-name">
-          RENACIDOS
-          <span>ROLEPLAY</span>
-        </div>
-      </a>
-
-      <p>© <span id="year"></span> Renacidos Roleplay. Comunidad de entretenimiento.</p>
-
-      <div class="footer-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#reglas">Reglas</a>
-        <a href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Discord ↗</a>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <section id="nosotros">
+    <div class="container about-grid">
+      <div class="about-panel">
+        <img src="./logo.png" alt="Emblema de Renacidos Roleplay">
+        <strong>RENACIDOS ROLEPLAY</strong>
+        <span>ESCRIBE TU HISTORIA</span>
+      </div>
+
+      <div class="about-text">
+        <div class="section-label">Mucho más que un servidor</div>
+        <h2>Tu historia. <span>Tus decisiones.</span></h2>
+
+        <p>
+          Renacidos Roleplay es una comunidad para disfrutar del rol,
+          conocer personas y crear historias dentro de una ciudad
+          llena de posibilidades.
+        </p>
+
+        <p>
+          Desarrolla tu personaje, persigue tus objetivos, trabaja
+          con otros jugadores y vive situaciones diferentes en cada sesión.
+        </p>
+
+        <div class="features">
+          <div class="feature"><span class="feature-icon">✓</span> Una comunidad para compartir y jugar</div>
+          <div class="feature"><span class="feature-icon">✓</span> Historias y experiencias de roleplay</div>
+          <div class="feature"><span class="feature-icon">✓</span> Acceso gratuito a nuestra comunidad</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="factions" id="facciones">
+    <div class="container">
+      <div class="section-heading">
+        <div class="section-label">Encuentra tu camino</div>
+        <h2>¿Qué papel vas a <span>interpretar?</span></h2>
+        <p class="section-intro">
+          Elige cómo quieres vivir tu historia. Cada personaje
+          puede abrirte una puerta diferente dentro de la ciudad.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-symbol">⚖</div>
+          <h3>Fuerzas del orden</h3>
+          <p>Protege a los ciudadanos, participa en operativos y haz cumplir las normas de la ciudad.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-symbol">✚</div>
+          <h3>Servicios médicos</h3>
+          <p>Atiende emergencias, ayuda a otros jugadores y conviértete en una pieza clave.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-symbol">◆</div>
+          <h3>Vida civil</h3>
+          <p>Trabaja, emprende, conoce personas y construye tu propio futuro en la ciudad.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="reglas">
+    <div class="container">
+      <div class="section-heading">
+        <div class="section-label">Una mejor experiencia para todos</div>
+        <h2>El rol empieza con <span>respeto.</span></h2>
+        <p class="section-intro">
+          Respeta las normas de la comunidad para mantener
+          una experiencia divertida y justa. Consulta el reglamento
+          completo en nuestro Discord.
+        </p>
+      </div>
+
+      <div class="rules-grid">
+        <article class="rule">
+          <div class="rule-number">REGLA 01</div>
+          <h3>Respeta a la comunidad</h3>
+          <p>Trata con respeto a los demás jugadores y al equipo de administración.</p>
+        </article>
+
+        <article class="rule">
+          <div class="rule-number">REGLA 02</div>
+          <h3>Valora el roleplay</h3>
+          <p>Interpreta a tu personaje y respeta las situaciones dentro del juego.</p>
+        </article>
+
+        <article class="rule">
+          <div class="rule-number">REGLA 03</div>
+          <h3>Lee el reglamento</h3>
+          <p>Revisa las reglas oficiales en Discord antes de comenzar tu aventura.</p>
+        </article>
+      </div>
+
+      <div style="margin-top:28px">
+        <a class="btn btn-secondary" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">
+          CONSULTAR REGLAMENTO ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="vip" id="vip">
+    <div class="container">
+      <div class="vip-box">
+        <div>
+          <div class="section-label">Personaliza tu experiencia</div>
+          <h2>Descubre las opciones <span>VIP.</span></h2>
+          <p>
+            Entra a nuestro Discord para consultar las opciones VIP
+            disponibles, sus condiciones y la información vigente.
+          </p>
+        </div>
+
+        <a class="btn btn-primary" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">
+          VER OPCIONES VIP ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="discord-section">
+    <div class="container">
+      <div class="discord-box">
+        <div class="section-label">La ciudad te espera</div>
+        <h2>¿Listo para <span>renacer?</span></h2>
+        <p>
+          Únete a nuestra comunidad, conoce a otros jugadores
+          y prepárate para escribir una historia que sea tuya.
+          La entrada a nuestra comunidad es gratuita.
+        </p>
+        <a class="btn btn-primary" href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">
+          ENTRAR A RENACIDOS ROLEPLAY ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <a class="brand" href="#inicio">
+      <img class="brand-logo" src="./logo.png" alt="Logo Renacidos Roleplay">
+      <div class="brand-name">
+        RENACIDOS
+        <span>ROLEPLAY</span>
+      </div>
+    </a>
+
+    <p>© <span id="year"></span> Renacidos Roleplay.</p>
+
+    <div class="footer-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#reglas">Reglas</a>
+      <a href="https://discord.gg/rCvswRNvN" target="_blank" rel="noopener noreferrer">Discord ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
